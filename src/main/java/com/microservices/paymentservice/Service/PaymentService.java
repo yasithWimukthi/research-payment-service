@@ -13,27 +13,27 @@ public class PaymentService {
 
     public String processPayment(String failure, int duration) {
 
-        String requestId = UUID.randomUUID().toString();
+        //String requestId = UUID.randomUUID().toString();
 
         long start = System.currentTimeMillis();
 
-        log.info("service={} requestId={} event=request_received",
-                SERVICE, requestId);
+        //log.info("service={} requestId={} event=request_received",
+                //SERVICE, requestId);
 
         try {
 
-            log.info("service={} requestId={} event=payment_validation_start",
-                    SERVICE, requestId);
+            log.info("service={}  event=payment_validation_start",
+                    SERVICE);
 
             simulateFailure(failure, duration);
 
-            log.info("service={} requestId={} event=payment_validation_end",
-                    SERVICE, requestId);
+            log.info("service={} event=payment_validation_end",
+                    SERVICE);
 
         } catch (Exception e) {
 
-            log.error("service={} requestId={} event=payment_failed error={}",
-                    SERVICE, requestId, e.getMessage());
+            log.error("service={} event=payment_failed error={}",
+                    SERVICE, e.getMessage());
 
             throw e;
         }
@@ -41,12 +41,12 @@ public class PaymentService {
         long latency = System.currentTimeMillis() - start;
 
         if (latency > 1000) {
-            log.warn("service={} requestId={} event=slow_response latency={}",
-                    SERVICE, requestId, latency);
+            log.warn("service={} event=slow_response latency={}",
+                    SERVICE, latency);
         }
 
-        log.info("service={} requestId={} event=response_sent latency={}",
-                SERVICE, requestId, latency);
+        log.info("service={} event=response_sent latency={}",
+                SERVICE, latency);
 
         return "payment-success";
     }
