@@ -1,6 +1,6 @@
-package com.microservices.paymentservice.Controller;
+package com.microservices.paymentservice.controller;
 
-import com.microservices.paymentservice.Service.PaymentService;
+import com.microservices.paymentservice.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
